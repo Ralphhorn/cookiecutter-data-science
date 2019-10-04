@@ -1,8 +1,6 @@
 import os
 import shutil
 
-print(os.getcwd())  
-
 def remove(filepath):
     if os.path.isfile(filepath):
         os.remove(filepath)
@@ -16,5 +14,3 @@ if not create_docker_folder:
      # remove absolute path to file nested inside the generated folder
     remove(os.path.join(os.getcwd(),'docker'))
     print('removed docker folder')
-
-
