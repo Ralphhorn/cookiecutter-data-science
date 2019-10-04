@@ -4,6 +4,7 @@ _A logical, reasonably standardized, but flexible project structure for doing an
 
 
 #### [Project homepage](http://drivendata.github.io/cookiecutter-data-science/)
+Modified by: Ralph Horn
 
 
 ### Requirements to use the cookiecutter template:
