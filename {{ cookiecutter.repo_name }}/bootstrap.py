@@ -62,8 +62,7 @@ def main():
             print('overwritten .envrc')
     if os.path.exists(docker_path):
         if input('Docker found\nBuild Docker Container? \n[0]: No\n[1]: Yes\n') == '1':
-            call(os.path.join(docker_path,"build_container.sh"))
-
+            call(["/bin/bash",os.path.join(docker_path,"build_container.sh")])
 
 if __name__ == '__main__':
     main()
