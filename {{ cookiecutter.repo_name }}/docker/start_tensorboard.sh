@@ -2,4 +2,4 @@
 mydir=$(dirname "$0")
 source $mydir/../.env
 
-tensorboard --logdir=reports/models/
+tensorboard --logdir=reports/tensorboard/
