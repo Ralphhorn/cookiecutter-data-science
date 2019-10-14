@@ -44,7 +44,7 @@ def main():
     path = os.path.split(os.path.realpath(__file__))[0]
     env_path = os.path.join(path, '.env')
     envrc_path = os.path.join(path, '.envrc')
-    docker_path = os.path.join(path, '.envrc')
+    docker_path = os.path.join(path, 'docker')
 
     # make .env file
     if not os.path.exists(env_path):
