@@ -1,5 +1,5 @@
 import os
-
+from subprocess import call
 
 def create_envrc(filepath):
     # make backup of original envrc
@@ -8,8 +8,8 @@ def create_envrc(filepath):
         print(f"Saved original .envrc at {filepath}")
 
     env_variables = dict()
-    env_variables["DOCKER_PASSWORD"] = input("Docker password")
-    env_variables["LOCAL_USERNAME"] = input("Local username")
+    env_variables["DOCKER_PASSWORD"] = input("Docker password:\n")
+    env_variables["LOCAL_USERNAME"] = input("Local username:\n")
     env_variables["DOCKER_NAME"] = os.path.split(os.path.split(filepath)[0])[1]
     env_variables["WORKSPACE_ROOT"] = '$( cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd )'
 
@@ -44,6 +44,7 @@ def main():
     path = os.path.split(os.path.realpath(__file__))[0]
     env_path = os.path.join(path, '.env')
     envrc_path = os.path.join(path, '.envrc')
+    docker_path = os.path.join(path, '.envrc')
 
     # make .env file
     if not os.path.exists(env_path):
@@ -59,6 +60,9 @@ def main():
         if input('.envrc exists \n Overwrite .envrc? \n[0]: No\n[1]: Yes\n') == '1':
             create_envrc(envrc_path)
             print('overwritten .envrc')
+    if os.path.exists(docker_path):
+        if input('Docker found\nBuild Docker Container? \n[0]: No\n[1]: Yes\n') == '1':
+            call(os.path.join(docker_path,"build_container.sh"))
 
 
 if __name__ == '__main__':
